@@ -174,6 +174,15 @@ export const VIDEO_CATALOG: VideoInfo[] = [
     description: "Video principal del juego actualizado"
   },
   
+  // === VIDEO PRINCIPAL ===
+  {
+    id: "main_video",
+    title: "Video Principal del Juego",
+    fileName: "VID_20240829_211830.mp4",
+    path: getAssetPath("/videos/VID_20240829_211830.mp4"),
+    description: "Video principal y trailer del juego Ninjago"
+  },
+
   // === VIDEOS GENERADOS ===
   { 
     id: "gen1", 
