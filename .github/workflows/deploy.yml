@@ -1,0 +1,57 @@
+# Workflow para construir y desplegar un proyecto de React en GitHub Pages
+name: Deploy React App to GitHub Pages
+
+on:
+  # Se ejecuta en pushes al branch "main"
+  push:
+    branches:
+      - main
+
+  # Permite ejecutar este workflow manualmente desde la pestaña de Actions
+  workflow_dispatch:
+
+# Permisos para el GITHUB_TOKEN para permitir el despliegue en GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Permite un solo despliegue concurrente, cancelando los anteriores
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  # Job de despliegue
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18 # Puedes usar la versión de Node que prefieras
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run build # Este comando construye tu aplicación
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Sube el directorio 'dist' que se genera con 'npm run build'
+          path: './dist'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
