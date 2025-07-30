@@ -29,9 +29,12 @@ export const useVideoAvailability = (videos: VideoInfo[]) => {
       try {
         console.log(`🔍 Checking video availability: ${video.title} at ${video.path}`);
         
-        // Use HEAD request to check if file exists without downloading
+        // Intentar obtener el video directamente en lugar de usar HEAD
         const response = await fetch(video.path, { 
-          method: 'HEAD',
+          method: 'GET',
+          headers: {
+            'Range': 'bytes=0-0' // Solo solicitar el primer byte para verificar disponibilidad
+          },
           cache: 'no-cache'
         });
 

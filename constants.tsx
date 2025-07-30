@@ -145,8 +145,8 @@ export const VIDEO_CATALOG: VideoInfo[] = [
   { 
     id: "ninjago1", 
     title: "LEGO NINJAGO: Cacería - Temporada 9", 
-    fileName: "Episodio 93 - LEGO NINJAGO_ Cacería - Temporada 9.mp4", 
-    path: getAssetPath("/videos/Episodio 93 - LEGO NINJAGO_ Cacería - Temporada 9.mp4"),
+    fileName: "publicvideosEpisodio 93 - LEGO NINJAGO_ Cacería - Temporada 9.mp4", 
+    path: getAssetPath("/videos/publicvideosEpisodio 93 - LEGO NINJAGO_ Cacería - Temporada 9.mp4"),
     description: "Episodio 93 de la temporada 9 de LEGO NINJAGO"
   },
   // Videos removidos por estar corruptos:
@@ -155,15 +155,15 @@ export const VIDEO_CATALOG: VideoInfo[] = [
   { 
     id: "ninjago4", 
     title: "Los de LEGO MOVIE como Polícias", 
-    fileName: "Los de LEGO MOVIE como Polícias.mp4",
-    path: getAssetPath("/videos/Los de LEGO MOVIE como Polícias.mp4"),
+    fileName: "publicvideosLos de LEGO MOVIE como Polícias.mp4",
+    path: getAssetPath("/videos/publicvideosLos de LEGO MOVIE como Polícias.mp4"),
     description: "Episodio especial de LEGO MOVIE"
   },
   { 
     id: "ninjago5", 
     title: "NINJAGO: El Ascenso de los Dragones - Los perdidos", 
-    fileName: "Los perdidos 👀 ｜ T3, E1 ｜ Episodio completo ｜ LEGO NINJAGO： El Ascenso de los Dragones.mp4",
-    path: getAssetPath("/videos/Los perdidos 👀 ｜ T3, E1 ｜ Episodio completo ｜ LEGO NINJAGO： El Ascenso de los Dragones.mp4"),
+    fileName: "publicvideosLos perdidos 👀 ｜ T3, E1 ｜ Episodio completo ｜ LEGO NINJAGO： El Ascenso de los Dragones.mp4",
+    path: getAssetPath("/videos/publicvideosLos perdidos 👀 ｜ T3, E1 ｜ Episodio completo ｜ LEGO NINJAGO： El Ascenso de los Dragones.mp4"),
     description: "Temporada 3, Episodio 1 - El Ascenso de los Dragones"
   },
   { 

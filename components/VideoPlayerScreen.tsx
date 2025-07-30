@@ -31,8 +31,20 @@ export const VideoPlayerScreen: React.FC<VideoPlayerScreenProps> = ({ onBackToMe
   const [showControls, setShowControls] = useState(true);
   const [isAppMuted, setIsAppMuted] = useState(audioManager.getIsMuted());
   const [videoError, setVideoError] = useState<string | null>(null); // State for video errors
+  const [retryCount, setRetryCount] = useState<number>(0);
 
   const videoStatus = useVideoAvailability(VIDEO_CATALOG);
+
+  // Función para reintentar la carga del video
+  const retryLoadVideo = useCallback(() => {
+    if (currentVideo) {
+      setVideoError(null);
+      setRetryCount(prev => prev + 1);
+      if (videoRef.current) {
+        videoRef.current.load();
+      }
+    }
+  }, [currentVideo]);
 
   const videoRef = useRef<HTMLVideoElement>(null);
   const playerContainerRef = useRef<HTMLDivElement>(null);
@@ -355,7 +367,18 @@ export const VideoPlayerScreen: React.FC<VideoPlayerScreenProps> = ({ onBackToMe
                         <div className="text-green-400">📦 Size: {(size / 1024 / 1024).toFixed(1)}MB</div>
                       )}
                       {error && (
-                        <div className="text-red-400">⚠️ {error}</div>
+                        <div className="text-red-400 flex items-center gap-2">
+                          <span>⚠️ {error}</span>
+                          <button 
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              retryLoadVideo();
+                            }}
+                            className="px-2 py-1 bg-red-500 hover:bg-red-600 rounded text-white"
+                          >
+                            Reintentar
+                          </button>
+                        </div>
                       )}
                     </div>
                   </div>
